@@ -31,13 +31,17 @@ class WassimGhostUltimate:
 
     def clear(self): os.system('cls' if os.name == 'nt' else 'clear')
 
-    def scan_port(self, target, port):
-        try:
-            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-                s.settimeout(0.5)
-                if s.connect_ex((target, port)) == 0: return port
-        except: return None
+def scan_port(self, target, port):
+    try:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.settimeout(2.0)
+            if s.connect_ex((target, port)) == 0:
+                return port
+    except:
+        pass
+    return None
 
+        except: return None
     def nmap_module(self):
         self.clear()
         console.print(Panel("[bold red]⚡ ADVANCED PORT DISCOVERY (MAX 10K) ⚡[/bold red]"))
